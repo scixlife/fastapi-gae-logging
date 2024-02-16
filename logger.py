@@ -23,14 +23,15 @@ formatter = logging.Formatter(
 
 # create handlers
 stream_handler = logging.StreamHandler(sys.stdout)
-file_handler = logging.FileHandler('app.log')
+# cannot write to file in Google App Engine, read-only file system
+# file_handler = logging.FileHandler('app.log')
 
 # set formatters
 stream_handler.setFormatter(formatter)
-file_handler.setFormatter(formatter)
+# file_handler.setFormatter(formatter)
 
 # add handlers to the logger
-logger.handlers = [stream_handler, file_handler]
+logger.handlers = [stream_handler]
 
 # set log level to INFO
 logger.setLevel(logging.INFO)
