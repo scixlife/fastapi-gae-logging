@@ -1,0 +1,4 @@
+runtime: python311
+service: fastapi-gae-logging
+instance_class: F1
+entrypoint: gunicorn -w 2 -k uvicorn.workers.UvicornWorker main:app
