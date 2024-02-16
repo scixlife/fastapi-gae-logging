@@ -2,21 +2,21 @@
 from fastapi import FastAPI
 import uvicorn
 from logger import logger
-from middleware import log_middleware
-from starlette.middleware.base import BaseHTTPMiddleware
+#from middleware import log_middleware
+#from starlette.middleware.base import BaseHTTPMiddleware
 
 app = FastAPI()
-app.add_middleware(BaseHTTPMiddleware, dispatch=log_middleware)
+# app.add_middleware(BaseHTTPMiddleware, dispatch=log_middleware)
 logger.info("Starting API...")
 
 @app.get('/')
 async def index() -> dict:
-    #logger.info('Request to index page.')
+    logger.info('Request to index page.')
     return {'message': 'Hello, World!'}
 
 @app.get('/upload/video')
 async def upload_videos() -> dict:
-    #logger.info('Request to video upload page.')
+    logger.info('Request to video upload page.')
     return {'message': 'Video uploaded.'}
 
 

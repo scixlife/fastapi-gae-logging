@@ -1,6 +1,4 @@
 runtime: python311
 service: fastapi-gae-logging
 instance_class: F1
-env_variables:
-  PORT: 8008
-entrypoint: gunicorn --bind :$PORT --timeout 3600 --workers 2 --worker-class uvicorn.workers.UvicornWorker main:app 
+entrypoint: gunicorn -b :$PORT -w 2 -k uvicorn.workers.UvicornWorker main:app 
